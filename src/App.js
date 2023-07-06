@@ -2,7 +2,8 @@ import "./App.css";
 import Sound from "./sounds/ambient.mp3";
 import Sound2 from "./sounds/ambient-rain.mp3";
 import Sound3 from "./sounds/ambient-happy.mp3";
-// import { Butterfly } from "./models/ButterflyCopy";
+import { Room } from "./models/Room";
+
 import {
   Environment,
   Sparkles,
@@ -35,22 +36,48 @@ function App() {
 
   return (
     <>
-      {/* <EffectComposer>
-        <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={5} height={480} />
-        <Bloom intensity={2} luminanceThreshold={0.1} luminanceSmoothing={0.9} height={1000} />
-        <Vignette eskil={false} offset={.1} darkness={1.5} />
-      </EffectComposer>    
-    
-      <ambientLight intensity={0.2} />
-      <spotLight position={[0, 25, 0]} angle={1.3} penumbra={1} castShadow intensity={2} shadow-bias={-0.0001} />
-      <Environment
-        preset='warehouse'
-      />       */}
-      <color attach="background" args={['#000']} />
+      <EffectComposer>
+        <DepthOfField
+          focusDistance={0}
+          focalLength={0.02}
+          bokehScale={5}
+          height={480}
+        />
+        <Bloom
+          intensity={2}
+          luminanceThreshold={0.1}
+          luminanceSmoothing={0.9}
+          height={1000}
+        />
+        <Vignette eskil={false} offset={0.1} darkness={1.5} />
+      </EffectComposer>
 
+      <ambientLight intensity={0.2} />
+      <spotLight
+        position={[0, 25, 0]}
+        angle={1.3}
+        penumbra={1}
+        castShadow
+        intensity={2}
+        shadow-bias={-0.0001}
+      />
+      <Environment preset="warehouse" />
+      <color attach="background" args={["#000"]} />
 
       <ScrollControls pages={6} damping={0.25}>
         <Scroll>
+          <Float
+            speed={1} // Animation speed, defaults to 1
+            rotationIntensity={2} // XYZ rotation intensity, defaults to 1
+            floatIntensity={0.2} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
+            floatingRange={[1, 1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
+          >
+            <Room
+              rotation-x={Math.PI * 0.05}
+              scale={0.05}
+              position={[0, -2.5, 0]}
+            />
+          </Float>
           {/* top
         <Float
           speed={1} // Animation speed, defaults to 1
@@ -235,8 +262,12 @@ function App() {
                   <h2 style={{ marginBottom: "30px", marginTop: "-20px" }}>
                     To get your life back
                   </h2>
-                  <Button variant="outline-light" size="lg">
-                    Get help now
+                  <Button
+                    variant="outline-light"
+                    size="lg"
+                    href="https://www.outofthebox.sale/"
+                  >
+                    Check our Products!
                   </Button>{" "}
                 </div>
               </Col>
