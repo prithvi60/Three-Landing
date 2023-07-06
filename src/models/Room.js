@@ -1,12 +1,15 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
-
+// import {But} from "/public/assets/room.glb"
 export function Room(props) {
   const group = useRef();
   //   const modelLoader = new GLTFLoader();
   //   modelLoader.load("/assets/models/myModel.glb", ...rest of the code...
-  const { nodes, materials, animations } = useGLTF("/assets/room.glb");
+  const { nodes, materials, animations } = useGLTF(process.env.PUBLIC_URL + "/assets/room.glb");
   const { actions } = useAnimations(animations, group);
+  useEffect(()=>{
+    console.log(actions)
+  })
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
@@ -712,4 +715,4 @@ export function Room(props) {
   );
 }
 
-useGLTF.preload("/futuristic_room.glb");
+useGLTF.preload(process.env.PUBLIC_URL + "/assets/room.glb");

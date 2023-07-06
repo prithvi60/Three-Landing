@@ -5,8 +5,8 @@ import Sound3 from "./sounds/ambient-happy.mp3";
 import { Room } from "./models/Room";
 
 import {
-  Environment,
-  Sparkles,
+  // Environment,
+  // Sparkles,
   ScrollControls,
   Scroll,
   PositionalAudio,
@@ -21,8 +21,8 @@ import { useEffect, useRef } from "react";
 import {
   EffectComposer,
   DepthOfField,
-  Bloom,
-  Vignette,
+  // Bloom,
+  // Vignette,
 } from "@react-three/postprocessing";
 
 function App() {
@@ -38,18 +38,18 @@ function App() {
     <>
       <EffectComposer>
         <DepthOfField
-          focusDistance={0}
+          focusDistance={2}
           focalLength={0.02}
-          bokehScale={5}
-          height={480}
+          bokehScale={2}
+          // height={480}
         />
-        <Bloom
+        {/* <Bloom
           intensity={2}
           luminanceThreshold={0.1}
           luminanceSmoothing={0.9}
           height={1000}
         />
-        <Vignette eskil={false} offset={0.1} darkness={1.5} />
+        <Vignette eskil={false} offset={0.1} darkness={1.5} /> */}
       </EffectComposer>
 
       <ambientLight intensity={0.2} />
@@ -61,7 +61,7 @@ function App() {
         intensity={2}
         shadow-bias={-0.0001}
       />
-      <Environment preset="warehouse" />
+      {/* <Environment preset="warehouse" /> */}
       <color attach="background" args={["#000"]} />
 
       <ScrollControls pages={6} damping={0.25}>
@@ -74,7 +74,7 @@ function App() {
           >
             <Room
               rotation-x={Math.PI * 0.05}
-              scale={0.05}
+              scale={1}
               position={[0, -2.5, 0]}
             />
           </Float>
@@ -159,10 +159,14 @@ function App() {
                 padding: "0px 30px 0px",
               }}
             >
-              <Col xs={6}>
+              <Col xs={6} style={{ width: "100%" }}>
                 <div>
-                  <h1 style={{ marginBottom: "0px" }}>
-                    Life can be a struggle
+                  <h1
+                    style={{ marginBottom: "0px" }}
+                    className="text-center text-md-left"
+                  >
+                    Cardboard furniture sets a clear intention when you enter a
+                    space.
                   </h1>
                 </div>
               </Col>
@@ -177,14 +181,33 @@ function App() {
                 top: "100vh",
               }}
             >
-              <Col xs={6}>
+              <Col xs={6} style={{ width: "100%" }}>
                 <div>
                   <h1 style={{ marginBottom: "0px" }}>
-                    Sometimes you can feel
+                    one that's bold, creative, and environmentally conscious.
                   </h1>
                 </div>
               </Col>
             </Row>
+            {/* <Row
+              className="text-center align-items-center justify-content-center"
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100vh",
+                padding: "0px 30px 0px",
+                top: "200vh",
+              }}
+            >
+              <Col xs={6} style={{width:"100%"}}>
+                <div>
+                  <h1 style={{ marginBottom: "0px" }}>Lost</h1>
+                  <h1 style={{ marginBottom: "0px" }}>Overwhelmed</h1>
+                  <h1 style={{ marginBottom: "0px" }}>Empty inside</h1>
+                </div>
+              </Col>
+            </Row> */}
+
             <Row
               className="text-center align-items-center justify-content-center"
               style={{
@@ -195,11 +218,12 @@ function App() {
                 top: "200vh",
               }}
             >
-              <Col xs={6}>
+              <Col xs={8}>
                 <div>
-                  <h1 style={{ marginBottom: "0px" }}>Lost</h1>
-                  <h1 style={{ marginBottom: "0px" }}>Overwhelmed</h1>
-                  <h1 style={{ marginBottom: "0px" }}>Empty inside</h1>
+                  <h1 style={{ marginBottom: "0px" }}>
+                    But there is hope...
+                    <br /> and people who can help
+                  </h1>
                 </div>
               </Col>
             </Row>
@@ -213,16 +237,15 @@ function App() {
                 top: "300vh",
               }}
             >
-              <Col xs={6}>
+              <Col xs={6} style={{ width: "100%" }}>
                 <div>
                   <h1 style={{ marginBottom: "0px" }}>
-                    Drifting through life <br />
-                    With no help or guidance
+                    It's time to get
+                    <br /> the support you need
                   </h1>
                 </div>
               </Col>
             </Row>
-
             <Row
               className="text-center align-items-center justify-content-center"
               style={{
@@ -233,41 +256,25 @@ function App() {
                 top: "400vh",
               }}
             >
-              <Col xs={8}>
+              <Col xs={6} style={{ width: "100%" }}>
                 <div>
-                  <h1 style={{ marginBottom: "0px" }}>
-                    But there is hope...
-                    <br /> and people who can help
+                  <h2 style={{ marginBottom: "0px" }}>Presenting to you</h2>
+                  <h1
+                    style={{
+                      marginBottom: "30px",
+                      marginTop: "-20px",
+                      color: "#af6935f7",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Out of the box
                   </h1>
-                </div>
-              </Col>
-            </Row>
-
-            <Row
-              className="text-center align-items-center justify-content-center"
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100vh",
-                padding: "0px 30px 0px",
-                top: "500vh",
-              }}
-            >
-              <Col xs={6}>
-                <div>
-                  <h1 style={{ marginBottom: "0px" }}>
-                    It's time to get
-                    <br /> the support you need
-                  </h1>
-                  <h2 style={{ marginBottom: "30px", marginTop: "-20px" }}>
-                    To get your life back
-                  </h2>
                   <Button
                     variant="outline-light"
                     size="lg"
                     href="https://www.outofthebox.sale/"
                   >
-                    Check our Products!
+                    Check our Products
                   </Button>{" "}
                 </div>
               </Col>
